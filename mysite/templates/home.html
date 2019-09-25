@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table mb-0">
+    <thead>
+      <tr>
+        <th>Image</th>
+        <th>Title</th>
+        <th>Detail</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for image in images %}
+        <tr>
+          <td>
+            {% if image.image %}
+              <img src="{{ image.image.url }}" alt="{{ image.title }}" style="width:100px;">
+            {% else %}
+              <span class="text-muted">No cover</span>
+            {% endif %}
+          </td>
+          <td>{{ image.title }}</td>
+          <td>
+            <a href="{{ image.image.url }}" class="btn btn-primary btn-sm" target="_blank">
+              Detail
+            </a>
+          </td>
+          <td>
+            <form method="post" action="{% url 'delete_image' image.pk %}">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+
+    </tbody>
+  </table>
+
+{% endblock %}
