@@ -1,5 +1,4 @@
-# Image Uploader
-#### Simple app capable to display and upload images. First approach do django framework.
+# Simple app capable to display and upload images. First approach do django framework.
 
 ## Running the Project Locally
 
